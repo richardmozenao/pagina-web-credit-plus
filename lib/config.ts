@@ -11,7 +11,7 @@ export const siteConfig = {
     "CreditPlus ayuda a la comunidad latina en Estados Unidos a entender y fortalecer su historial crediticio con educación financiera y acompañamiento personalizado en español e inglés.",
   url: "https://credit-plus.net",
   email: "creditplus.admin@gmail.com",
-  phoneDisplay: "(786) 555-1234", // TODO: número real de la oficina
+  phoneDisplay: "+1 (857) 365-5972",
   address: {
     city: "Miami",
     state: "FL",
@@ -31,7 +31,7 @@ export const siteConfig = {
  * sin espacios, sin "+" y sin guiones. Ejemplo: 17865551234
  */
 export const whatsappConfig = {
-  phoneNumber: "17865551234", // TODO: número real en formato internacional
+  phoneNumber: "18573655972",
   defaultMessage:
     "Hola, quiero más información sobre los servicios de CreditPlus.",
 };

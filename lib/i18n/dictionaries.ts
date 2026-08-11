@@ -62,7 +62,6 @@ const es = {
     },
   },
   hero: {
-    badge: "Atención en español e inglés",
     titlePre: "Tu crédito puede",
     titleGradient: "abrirte nuevas oportunidades.",
     description:
@@ -76,17 +75,11 @@ const es = {
   stats: [
     { value: 10, suffix: "+", label: "Años de experiencia" },
     { value: 15000, suffix: "+", label: "Personas orientadas" },
-    { value: 2, suffix: "", label: "Idiomas de atención" },
   ],
   benefits: {
     kicker: "Por qué CreditPlus",
     title: "Un acompañamiento honesto, pensado para ti",
     items: [
-      {
-        icon: "Languages" as const,
-        title: "Atención en español e inglés",
-        text: "Te explicamos cada paso en tu idioma, sin tecnicismos ni letras pequeñas.",
-      },
       {
         icon: "Users" as const,
         title: "Acompañamiento personalizado",
@@ -247,9 +240,9 @@ const es = {
           "La consulta inicial es gratuita y sin compromiso. En ella conversamos sobre tu situación y te explicamos cómo podemos ayudarte.",
       },
       {
-        question: "¿Necesito hablar inglés para trabajar con ustedes?",
+        question: "¿En qué idioma es la atención?",
         answer:
-          "No. Atendemos en español e inglés, desde la primera llamada hasta el seguimiento, en el idioma que prefieras.",
+          "Atendemos en español, desde la primera llamada hasta el seguimiento.",
       },
       {
         question: "¿Cuánto tiempo toma ver resultados?",
@@ -270,7 +263,7 @@ const es = {
   },
   cta: {
     title: "Da el primer paso hacia un mejor futuro financiero",
-    text: "Agenda una consulta gratuita y conversemos, en español o inglés, sobre cómo fortalecer tu perfil crediticio.",
+    text: "Agenda una consulta gratuita y conversemos sobre cómo fortalecer tu perfil crediticio.",
     button: "Agenda tu consulta gratuita",
   },
   whatsapp: {
@@ -289,16 +282,16 @@ const es = {
   home: {
     title: "Más crédito, más oportunidades",
     description:
-      "CreditPlus ayuda a la comunidad latina en Estados Unidos a entender su crédito, educarse financieramente y prepararse para comprar casa o auto. Atención en español e inglés.",
+      "CreditPlus ayuda a la comunidad latina en Estados Unidos a entender su crédito, educarse financieramente y prepararse para comprar casa o auto.",
   },
   contactPage: {
     title: "Contacto",
     description:
-      "Agenda tu consulta gratuita con CreditPlus. Escríbenos por correo, WhatsApp o completa el formulario y te contactaremos en español o inglés.",
+      "Agenda tu consulta gratuita con CreditPlus. Escríbenos por correo, WhatsApp o completa el formulario y te contactaremos.",
     kicker: "Contacto",
     heading: "Hablemos sobre tu próximo paso financiero",
     subheading:
-      "Completa el formulario o escríbenos directamente. Te respondemos en español o inglés, sin presión ni compromiso.",
+      "Completa el formulario o escríbenos directamente. Te respondemos sin presión ni compromiso.",
     info: {
       email: "Correo",
       phone: "Teléfono",
@@ -521,7 +514,6 @@ const en: Dictionary = {
     },
   },
   hero: {
-    badge: "Service in Spanish and English",
     titlePre: "Your credit can",
     titleGradient: "open new opportunities for you.",
     description:
@@ -535,17 +527,11 @@ const en: Dictionary = {
   stats: [
     { value: 10, suffix: "+", label: "Years of experience" },
     { value: 15000, suffix: "+", label: "People guided" },
-    { value: 2, suffix: "", label: "Languages we serve in" },
   ],
   benefits: {
     kicker: "Why CreditPlus",
     title: "Honest guidance, built around you",
     items: [
-      {
-        icon: "Languages",
-        title: "Service in Spanish and English",
-        text: "We explain every step in your language, no jargon and no fine print.",
-      },
       {
         icon: "Users",
         title: "Personalized guidance",
@@ -706,9 +692,9 @@ const en: Dictionary = {
           "The initial consultation is free and comes with no obligation. In it, we talk about your situation and explain how we can help you.",
       },
       {
-        question: "Do I need to speak Spanish to work with you?",
+        question: "What language is your service in?",
         answer:
-          "No. We serve you in Spanish and English, from the first call through follow-up, in whichever language you prefer.",
+          "We serve you in Spanish, from the first call through follow-up.",
       },
       {
         question: "How long does it take to see results?",
@@ -729,7 +715,7 @@ const en: Dictionary = {
   },
   cta: {
     title: "Take the first step toward a better financial future",
-    text: "Book a free consultation and let's talk, in Spanish or English, about how to strengthen your credit profile.",
+    text: "Book a free consultation and let's talk about how to strengthen your credit profile.",
     button: "Book your free consultation",
   },
   whatsapp: {
@@ -748,16 +734,16 @@ const en: Dictionary = {
   home: {
     title: "More credit, more opportunities",
     description:
-      "CreditPlus helps the Latino community in the United States understand their credit, build financial knowledge, and prepare to buy a home or a car. Service in Spanish and English.",
+      "CreditPlus helps the Latino community in the United States understand their credit, build financial knowledge, and prepare to buy a home or a car.",
   },
   contactPage: {
     title: "Contact",
     description:
-      "Book your free consultation with CreditPlus. Write to us by email, WhatsApp, or fill out the form and we'll get back to you in Spanish or English.",
+      "Book your free consultation with CreditPlus. Write to us by email, WhatsApp, or fill out the form and we'll get back to you.",
     kicker: "Contact",
     heading: "Let's talk about your next financial step",
     subheading:
-      "Fill out the form or write to us directly. We reply in Spanish or English, with no pressure or obligation.",
+      "Fill out the form or write to us directly. We reply with no pressure or obligation.",
     info: {
       email: "Email",
       phone: "Phone",

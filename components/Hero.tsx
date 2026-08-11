@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ShieldCheck } from "lucide-react";
 import { useLang } from "@/lib/i18n/LangProvider";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Hero() {
   const { lang, dict } = useLang();
@@ -28,9 +28,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-2xl"
         >
-          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-black/30 px-4 py-1.5 text-xs font-medium tracking-wide text-gold backdrop-blur-sm">
-            <ShieldCheck size={14} /> {dict.hero.badge}
-          </span>
+          <LanguageSwitcher className="mb-6" />
 
           <h1 className="font-display text-4xl font-semibold leading-tight text-paper md:text-6xl">
             {dict.hero.titlePre}{" "}

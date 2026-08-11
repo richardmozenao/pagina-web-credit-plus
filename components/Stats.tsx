@@ -33,7 +33,7 @@ export default function Stats() {
 
   return (
     <section className="border-y border-gold/15 bg-ink py-14">
-      <div className="container-xl grid grid-cols-1 gap-10 text-center sm:grid-cols-3">
+      <div className="container-xl grid grid-cols-1 gap-10 text-center sm:grid-cols-2">
         {dict.stats.map((s, i) => (
           <motion.div
             key={s.label}
