@@ -19,7 +19,7 @@ export const siteConfig = {
   },
   social: {
     facebook: "https://facebook.com/crediplususa",
-    instagram: "https://instagram.com/crediplususa",
+    instagram: "https://www.instagram.com/creditplus_oficial?igsh=azlpZmJqc2FxOWl4&utm_source=qr",
     tiktok: "https://tiktok.com/@crediplususa",
     youtube: "https://youtube.com/@crediplususa",
   },
