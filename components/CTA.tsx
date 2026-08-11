@@ -2,13 +2,16 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useLang } from "@/lib/i18n/LangProvider";
 
 export default function CTA() {
+  const { lang, dict } = useLang();
+
   return (
     <section className="relative overflow-hidden bg-ink py-24 text-center">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.15),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(232,163,61,0.15),transparent_60%)]"
       />
       <motion.div
         initial={{ opacity: 0, y: 24 }}
@@ -17,18 +20,15 @@ export default function CTA() {
         transition={{ duration: 0.6 }}
         className="container-xl relative"
       >
-        <h2 className="mx-auto max-w-2xl text-3xl font-semibold text-paper md:text-5xl">
-          Da el primer paso hacia un mejor futuro financiero
+        <h2 className="mx-auto max-w-2xl font-display text-3xl font-semibold text-paper md:text-5xl">
+          {dict.cta.title}
         </h2>
-        <p className="mx-auto mt-5 max-w-xl text-mist/70">
-          Agenda una consulta gratuita y conversemos, en español, sobre cómo
-          fortalecer tu perfil crediticio.
-        </p>
+        <p className="mx-auto mt-5 max-w-xl text-mist/70">{dict.cta.text}</p>
         <Link
-          href="/contacto"
+          href={`/${lang}/contacto`}
           className="mt-9 inline-block rounded-full bg-gold px-10 py-4 text-sm font-semibold text-ink shadow-gold transition hover:-translate-y-0.5 hover:shadow-lg"
         >
-          Agenda tu consulta gratuita
+          {dict.cta.button}
         </Link>
       </motion.div>
     </section>

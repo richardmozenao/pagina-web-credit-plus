@@ -5,12 +5,12 @@
  */
 
 export const siteConfig = {
-  name: "CrediPlus",
+  name: "CreditPlus",
   slogan: "Más crédito. Más oportunidades.",
   description:
-    "CrediPlus ayuda a la comunidad latina en Estados Unidos a entender y fortalecer su historial crediticio con educación financiera y acompañamiento personalizado en español.",
-  url: "https://www.crediplus.com", // TODO: reemplazar por el dominio real
-  email: "soporte.crediplus@gmail.com",
+    "CreditPlus ayuda a la comunidad latina en Estados Unidos a entender y fortalecer su historial crediticio con educación financiera y acompañamiento personalizado en español e inglés.",
+  url: "https://credit-plus.net",
+  email: "creditplus.admin@gmail.com",
   phoneDisplay: "(786) 555-1234", // TODO: número real de la oficina
   address: {
     city: "Miami",
@@ -33,26 +33,25 @@ export const siteConfig = {
 export const whatsappConfig = {
   phoneNumber: "17865551234", // TODO: número real en formato internacional
   defaultMessage:
-    "Hola, quiero más información sobre los servicios de CrediPlus.",
+    "Hola, quiero más información sobre los servicios de CreditPlus.",
 };
 
 /**
- * EMAILJS
- * 1. Crea una cuenta gratuita en https://www.emailjs.com
- * 2. Conecta un servicio de correo (Gmail, Outlook, etc.) y copia el "Service ID"
- * 3. Crea una plantilla de correo y copia el "Template ID"
- * 4. En "Account > General" copia tu "Public Key"
- * 5. Crea un archivo .env.local en la raíz del proyecto (no lo subas a git) con:
+ * STATIC FORMS (staticforms.dev)
+ * El sitio es un export estático (GitHub Pages, sin backend), así que el
+ * formulario de contacto envía el correo con Static Forms: un servicio
+ * gratuito que recibe el POST directamente desde el navegador y reenvía
+ * el mensaje a la casilla configurada en su dashboard (actualmente
+ * creditplus.admin@gmail.com) — sin servidor propio ni secretos de build.
  *
- *    NEXT_PUBLIC_EMAILJS_SERVICE_ID=tu_service_id
- *    NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=tu_template_id
- *    NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=tu_public_key
+ * Para activarlo:
+ * 1. Entra a https://staticforms.dev y regístrate (gratis).
+ * 2. Crea un formulario y copia su "Access Key".
+ * 3. Pégala abajo.
  *
- * El formulario de contacto (components/ContactForm.tsx) ya está listo
- * para leer estas variables y enviar los mensajes a soporte.crediplus@gmail.com
+ * La Access Key es pública por diseño (viaja en el HTML del cliente), por
+ * eso se guarda directo en este archivo y no como secret de CI.
  */
-export const emailjsConfig = {
-  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "",
-  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "",
-  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "",
+export const staticFormsConfig = {
+  accessKey: "sf_5c4d4fd53bc2ccc7258873c5",
 };

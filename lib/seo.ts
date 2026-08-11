@@ -26,7 +26,7 @@ export function organizationJsonLd() {
   };
 }
 
-export function faqJsonLd(items: { question: string; answer: string }[]) {
+export function faqJsonLd(items: readonly { question: string; answer: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",

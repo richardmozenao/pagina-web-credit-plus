@@ -4,13 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
+import { useLang } from "@/lib/i18n/LangProvider";
 
 export default function Hero() {
+  const { lang, dict } = useLang();
+
   return (
     <section className="relative isolate flex min-h-screen items-center overflow-hidden bg-ink pt-20">
       <Image
         src="https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=1800&q=80"
-        alt="Familia latina sonriendo frente a su nueva casa, celebrando un logro financiero"
+        alt={dict.hero.imageAlt}
         fill
         priority
         className="object-cover opacity-40"
@@ -26,39 +29,34 @@ export default function Hero() {
           className="max-w-2xl"
         >
           <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-black/30 px-4 py-1.5 text-xs font-medium tracking-wide text-gold backdrop-blur-sm">
-            <ShieldCheck size={14} /> Atención 100% en español
+            <ShieldCheck size={14} /> {dict.hero.badge}
           </span>
 
-          <h1 className="text-4xl font-semibold leading-tight text-paper md:text-6xl">
-            Tu crédito puede{" "}
-            <span className="text-gradient-gold">abrirte nuevas oportunidades.</span>
+          <h1 className="font-display text-4xl font-semibold leading-tight text-paper md:text-6xl">
+            {dict.hero.titlePre}{" "}
+            <span className="text-gradient-gold">{dict.hero.titleGradient}</span>
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-mist/80">
-            Te acompañamos a entender tu reporte de crédito, tomar mejores
-            decisiones financieras y prepararte con confianza para tu próxima
-            casa, tu próximo auto o la tarjeta que necesitas.
+            {dict.hero.description}
           </p>
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
             <Link
-              href="/contacto"
+              href={`/${lang}/contacto`}
               className="rounded-full bg-gold px-8 py-4 text-center text-sm font-semibold text-ink shadow-gold transition hover:-translate-y-0.5 hover:shadow-lg"
             >
-              Agenda tu consulta
+              {dict.hero.ctaPrimary}
             </Link>
             <a
-              href="/contacto#formulario"
+              href={`/${lang}/contacto#formulario`}
               className="rounded-full border border-mist/30 px-8 py-4 text-center text-sm font-semibold text-paper transition hover:border-gold hover:text-gold"
             >
-              Escríbenos
+              {dict.hero.ctaSecondary}
             </a>
           </div>
 
-          <p className="mt-6 text-xs text-mist/50">
-            Servicio educativo e informativo. No garantizamos aumentos de
-            puntaje ni eliminación de deudas.
-          </p>
+          <p className="mt-6 text-xs text-mist/50">{dict.hero.disclaimer}</p>
         </motion.div>
       </div>
     </section>

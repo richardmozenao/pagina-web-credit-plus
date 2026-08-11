@@ -1,31 +1,33 @@
-import type { Metadata } from "next";
-import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
-import Benefits from "@/components/Benefits";
-import Services from "@/components/Services";
-import Process from "@/components/Process";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
-import CTA from "@/components/CTA";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Más crédito, más oportunidades",
-  description:
-    "CrediPlus ayuda a la comunidad latina en Estados Unidos a entender su crédito, educarse financieramente y prepararse para comprar casa o auto. Atención 100% en español.",
-  alternates: { canonical: "/" },
-};
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default function HomePage() {
+/**
+ * Redirector de idioma. GitHub Pages no permite redirects de servidor, así
+ * que "/" detecta el idioma preferido del navegador (o la preferencia ya
+ * guardada por el LanguageSwitcher) y navega a /es o /en. El <noscript>
+ * de abajo es la red de seguridad para navegadores sin JS.
+ */
+export default function RootRedirect() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem("lang");
+    const lang =
+      saved === "es" || saved === "en"
+        ? saved
+        : navigator.language.toLowerCase().startsWith("es")
+          ? "es"
+          : "en";
+    router.replace(`/${lang}`);
+  }, [router]);
+
   return (
-    <>
-      <Hero />
-      <Stats />
-      <Benefits />
-      <Services />
-      <Process />
-      <Testimonials />
-      <FAQ compact />
-      <CTA />
-    </>
+    <noscript>
+      <p>
+        <a href="/es">Continuar en español</a> · <a href="/en">Continue in English</a>
+      </p>
+    </noscript>
   );
 }

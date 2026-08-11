@@ -1,18 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 import Loader from "@/components/Loader";
+import HtmlLangSync from "@/components/HtmlLangSync";
 import { siteConfig } from "@/lib/config";
 import { organizationJsonLd } from "@/lib/seo";
 
-const poppins = Poppins({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
+  weight: ["600", "900"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -59,7 +63,7 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
     apple: "/apple-touch-icon.png",
   },
   robots: {
@@ -69,7 +73,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#101010",
+  themeColor: "#0F2A4A",
   width: "device-width",
   initialScale: 1,
 };
@@ -80,7 +84,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={poppins.variable}>
+    <html lang="es" className={`${fraunces.variable} ${inter.variable}`}>
       <body className="font-sans">
         <script
           type="application/ld+json"
@@ -95,12 +99,9 @@ export default function RootLayout({
         >
           Saltar al contenido principal
         </a>
+        <HtmlLangSync />
         <Loader />
-        <Navbar />
-        <main id="contenido">{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <BackToTop />
+        {children}
       </body>
     </html>
   );

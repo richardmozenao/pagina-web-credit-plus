@@ -6,14 +6,8 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
-
-const links = [
-  { href: "/", label: "Inicio" },
-  { href: "/servicios", label: "Servicios" },
-  { href: "/sobre-nosotros", label: "Sobre Nosotros" },
-  { href: "/preguntas-frecuentes", label: "Preguntas Frecuentes" },
-  { href: "/contacto", label: "Contacto" },
-];
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLang } from "@/lib/i18n/LangProvider";
 
 export default function Navbar() {
   const [hidden, setHidden] = useState(false);
@@ -21,6 +15,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [lastY, setLastY] = useState(0);
   const pathname = usePathname();
+  const { lang, dict } = useLang();
 
   useEffect(() => {
     const onScroll = () => {
@@ -37,6 +32,8 @@ export default function Navbar() {
     setOpen(false);
   }, [pathname]);
 
+  const contactHref = `/${lang}/contacto`;
+
   return (
     <motion.header
       animate={{ y: hidden ? -96 : 0 }}
@@ -46,38 +43,44 @@ export default function Navbar() {
       }`}
     >
       <nav
-        aria-label="Navegación principal"
+        aria-label={dict.nav.ariaLabel}
         className="container-xl flex h-20 items-center justify-between"
       >
-        <Logo variant="dark" />
+        <Logo />
 
         <ul className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className={`text-sm font-medium tracking-wide transition-colors hover:text-gold ${
-                  pathname === link.href ? "text-gold" : "text-paper"
-                }`}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {dict.nav.links.map((link) => {
+            const href = `/${lang}${link.href}`;
+            return (
+              <li key={link.href}>
+                <Link
+                  href={href}
+                  className={`text-sm font-medium tracking-wide transition-colors hover:text-gold ${
+                    pathname === href ? "text-gold" : "text-paper"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
-        <Link
-          href="/contacto"
-          className="hidden rounded-full border border-gold bg-gold px-6 py-2.5 text-sm font-semibold text-ink transition hover:bg-transparent hover:text-gold md:inline-block"
-        >
-          Agenda tu consulta
-        </Link>
+        <div className="hidden items-center gap-6 md:flex">
+          <LanguageSwitcher className="text-paper" />
+          <Link
+            href={contactHref}
+            className="rounded-full border border-gold bg-gold px-6 py-2.5 text-sm font-semibold text-ink transition hover:bg-transparent hover:text-gold"
+          >
+            {dict.nav.cta}
+          </Link>
+        </div>
 
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          aria-label={open ? dict.nav.closeMenu : dict.nav.openMenu}
           className="text-paper md:hidden"
         >
           {open ? <X size={26} /> : <Menu size={26} />}
@@ -94,26 +97,30 @@ export default function Navbar() {
             className="glass md:hidden"
           >
             <ul className="container-xl flex flex-col gap-1 py-4">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={`block rounded-lg px-3 py-3 text-base font-medium ${
-                      pathname === link.href
-                        ? "text-gold"
-                        : "text-paper hover:text-gold"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {dict.nav.links.map((link) => {
+                const href = `/${lang}${link.href}`;
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={href}
+                      className={`block rounded-lg px-3 py-3 text-base font-medium ${
+                        pathname === href ? "text-gold" : "text-paper hover:text-gold"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
               <li className="pt-2">
+                <LanguageSwitcher className="px-3 py-2 text-paper" />
+              </li>
+              <li className="pt-1">
                 <Link
-                  href="/contacto"
+                  href={contactHref}
                   className="block rounded-full bg-gold px-4 py-3 text-center text-sm font-semibold text-ink"
                 >
-                  Agenda tu consulta
+                  {dict.nav.cta}
                 </Link>
               </li>
             </ul>

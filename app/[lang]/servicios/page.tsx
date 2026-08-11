@@ -8,39 +8,57 @@ import {
   Car,
   Compass,
 } from "lucide-react";
-import { services } from "@/lib/services-data";
 import CTA from "@/components/CTA";
+import { dictionaries } from "@/lib/i18n/dictionaries";
+import type { Locale } from "@/lib/i18n/routes";
 
 const icons = { FileSearch, GraduationCap, TrendingUp, Home, Car, Compass };
 
-export const metadata: Metadata = {
-  title: "Servicios",
-  description:
-    "Conoce los servicios de CrediPlus: revisión de reporte de crédito, educación financiera, estrategias personalizadas y preparación para préstamos hipotecarios y de auto.",
-  alternates: { canonical: "/servicios" },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang: rawLang } = await params;
+  const lang: Locale = rawLang === "en" ? "en" : "es";
+  const dict = dictionaries[lang];
+  return {
+    title: dict.servicesPage.title,
+    description: dict.servicesPage.description,
+    alternates: {
+      canonical: `/${lang}/servicios`,
+      languages: { es: "/es/servicios", en: "/en/servicios" },
+    },
+  };
+}
 
-export default function ServiciosPage() {
+export default async function ServiciosPage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang: rawLang } = await params;
+  const lang: Locale = rawLang === "en" ? "en" : "es";
+  const dict = dictionaries[lang];
+  const p = dict.servicesPage;
+
   return (
     <>
       <header className="bg-ink pb-16 pt-36 text-center">
         <div className="container-xl">
           <span className="text-xs font-semibold uppercase tracking-widest text-gold">
-            Servicios
+            {p.kicker}
           </span>
-          <h1 className="mx-auto mt-3 max-w-2xl text-4xl font-semibold text-paper md:text-5xl">
-            Todo lo que hacemos por tu tranquilidad financiera
+          <h1 className="mx-auto mt-3 max-w-2xl font-display text-4xl font-semibold text-paper md:text-5xl">
+            {p.heading}
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-mist/70">
-            Cada servicio está diseñado para informarte y prepararte, con
-            honestidad, sin promesas irreales sobre tu puntaje o tus deudas.
-          </p>
+          <p className="mx-auto mt-5 max-w-xl text-mist/70">{p.subheading}</p>
         </div>
       </header>
 
       <section className="section bg-paper">
         <div className="container-xl grid gap-8 md:grid-cols-2">
-          {services.map((s) => {
+          {dict.services.items.map((s) => {
             const Icon = icons[s.iconName];
             return (
               <article
@@ -52,14 +70,12 @@ export default function ServiciosPage() {
                   <Icon size={22} />
                 </div>
                 <h2 className="text-xl font-semibold text-ink">{s.title}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-ink/60">
-                  {s.description}
-                </p>
+                <p className="mt-3 text-sm leading-relaxed text-ink/60">{s.description}</p>
                 <Link
-                  href="/contacto"
+                  href={`/${lang}/contacto`}
                   className="mt-6 inline-block rounded-full border border-ink px-6 py-2.5 text-sm font-semibold text-ink transition hover:border-gold hover:text-gold"
                 >
-                  Consultar sobre este servicio
+                  {dict.services.ctaButton}
                 </Link>
               </article>
             );

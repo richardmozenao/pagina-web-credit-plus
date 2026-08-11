@@ -3,38 +3,11 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Star, Info } from "lucide-react";
-
-const testimonials = [
-  {
-    name: "Marisol R.",
-    city: "Houston, TX",
-    rating: 5,
-    photo:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
-    quote:
-      "Me explicaron mi reporte de crédito con paciencia y en español. Por fin entendí qué estaba pasando con mi historial.",
-  },
-  {
-    name: "Jorge M.",
-    city: "Orlando, FL",
-    rating: 5,
-    photo:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
-    quote:
-      "El plan que armamos juntos fue realista y claro. Sentí que trabajaban conmigo, no solo para venderme algo.",
-  },
-  {
-    name: "Ana P.",
-    city: "Phoenix, AZ",
-    rating: 5,
-    photo:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
-    quote:
-      "Aprendí mucho sobre cómo funciona el crédito aquí en Estados Unidos. Hoy me siento más segura tomando decisiones.",
-  },
-];
+import { useLang } from "@/lib/i18n/LangProvider";
 
 export default function Testimonials() {
+  const { dict } = useLang();
+
   return (
     <section className="section bg-paper">
       <div className="container-xl">
@@ -46,15 +19,15 @@ export default function Testimonials() {
           className="mx-auto max-w-2xl text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-gold">
-            Testimonios
+            {dict.testimonials.kicker}
           </span>
-          <h2 className="mt-3 text-3xl font-semibold text-ink md:text-4xl">
-            Historias de personas que confiaron en nosotros
+          <h2 className="mt-3 font-display text-3xl font-semibold text-ink md:text-4xl">
+            {dict.testimonials.title}
           </h2>
         </motion.div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t, i) => (
+          {dict.testimonials.items.map((t, i) => (
             <motion.figure
               key={t.name}
               initial={{ opacity: 0, y: 24 }}
@@ -65,7 +38,7 @@ export default function Testimonials() {
             >
               <div className="flex items-center gap-1 text-gold" aria-hidden="true">
                 {Array.from({ length: t.rating }).map((_, idx) => (
-                  <Star key={idx} size={16} fill="#D4AF37" strokeWidth={0} />
+                  <Star key={idx} size={16} fill="#E8A33D" strokeWidth={0} />
                 ))}
               </div>
               <blockquote className="mt-4 text-sm leading-relaxed text-ink/70">
@@ -90,9 +63,7 @@ export default function Testimonials() {
 
         <p className="mx-auto mt-8 flex max-w-xl items-start gap-2 text-center text-xs text-ink/45">
           <Info size={14} className="mt-0.5 shrink-0" />
-          Los testimonios y fotografías mostrados son ejemplos ilustrativos
-          creados para fines de diseño y no representan clientes reales de
-          CrediPlus.
+          {dict.testimonials.disclaimer}
         </p>
       </div>
     </section>

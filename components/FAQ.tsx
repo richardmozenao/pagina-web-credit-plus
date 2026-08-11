@@ -3,21 +3,22 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { faqs } from "@/lib/faq-data";
+import { useLang } from "@/lib/i18n/LangProvider";
 
 export default function FAQ({ compact = false }: { compact?: boolean }) {
   const [open, setOpen] = useState<number | null>(0);
-  const items = compact ? faqs.slice(0, 4) : faqs;
+  const { dict } = useLang();
+  const items = compact ? dict.faq.items.slice(0, 4) : dict.faq.items;
 
   return (
     <section className="section bg-ink">
       <div className="container-xl">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-widest text-gold">
-            Preguntas frecuentes
+            {dict.faq.kicker}
           </span>
-          <h2 className="mt-3 text-3xl font-semibold text-paper md:text-4xl">
-            Respuestas claras, sin letras pequeñas
+          <h2 className="mt-3 font-display text-3xl font-semibold text-paper md:text-4xl">
+            {dict.faq.title}
           </h2>
         </div>
 
@@ -57,9 +58,7 @@ export default function FAQ({ compact = false }: { compact?: boolean }) {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-6 text-sm leading-relaxed text-mist/70">
-                        {item.answer}
-                      </p>
+                      <p className="pb-6 text-sm leading-relaxed text-mist/70">{item.answer}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

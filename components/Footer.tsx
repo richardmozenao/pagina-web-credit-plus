@@ -1,23 +1,27 @@
+"use client";
+
 import Link from "next/link";
 import { Facebook, Instagram, Youtube, Mail } from "lucide-react";
 import Logo from "./Logo";
 import { siteConfig } from "@/lib/config";
+import { useLang } from "@/lib/i18n/LangProvider";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { lang, dict } = useLang();
 
   return (
     <footer className="bg-ink text-mist">
       <div className="container-xl grid gap-12 py-16 md:grid-cols-4">
         <div className="md:col-span-2">
-          <Logo variant="dark" />
+          <Logo />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-mist/70">
             {siteConfig.description}
           </p>
           <div className="mt-6 flex gap-4">
             <a
               href={siteConfig.social.facebook}
-              aria-label="CrediPlus en Facebook"
+              aria-label={dict.footer.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-mist/20 p-2.5 transition hover:border-gold hover:text-gold"
@@ -26,7 +30,7 @@ export default function Footer() {
             </a>
             <a
               href={siteConfig.social.instagram}
-              aria-label="CrediPlus en Instagram"
+              aria-label={dict.footer.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-mist/20 p-2.5 transition hover:border-gold hover:text-gold"
@@ -35,7 +39,7 @@ export default function Footer() {
             </a>
             <a
               href={siteConfig.social.youtube}
-              aria-label="CrediPlus en YouTube"
+              aria-label={dict.footer.social.youtube}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-mist/20 p-2.5 transition hover:border-gold hover:text-gold"
@@ -47,24 +51,31 @@ export default function Footer() {
 
         <div>
           <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold">
-            Navegación
+            {dict.footer.navTitle}
           </h3>
           <ul className="space-y-3 text-sm text-mist/80">
-            <li><Link className="hover:text-gold" href="/servicios">Servicios</Link></li>
-            <li><Link className="hover:text-gold" href="/sobre-nosotros">Sobre Nosotros</Link></li>
-            <li><Link className="hover:text-gold" href="/preguntas-frecuentes">Preguntas Frecuentes</Link></li>
-            <li><Link className="hover:text-gold" href="/contacto">Contacto</Link></li>
+            {dict.footer.links.map((link) => (
+              <li key={link.href}>
+                <Link className="hover:text-gold" href={`/${lang}${link.href}`}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
         <div>
           <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold">
-            Legal
+            {dict.footer.legalTitle}
           </h3>
           <ul className="space-y-3 text-sm text-mist/80">
-            <li><Link className="hover:text-gold" href="/politica-de-privacidad">Política de Privacidad</Link></li>
-            <li><Link className="hover:text-gold" href="/terminos-y-condiciones">Términos y Condiciones</Link></li>
-            <li><Link className="hover:text-gold" href="/aviso-legal">Aviso Legal</Link></li>
+            {dict.footer.legalLinks.map((link) => (
+              <li key={link.href}>
+                <Link className="hover:text-gold" href={`/${lang}${link.href}`}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
           <a
             href={`mailto:${siteConfig.email}`}
@@ -77,9 +88,7 @@ export default function Footer() {
 
       <div className="border-t border-mist/10 py-6">
         <p className="container-xl text-center text-xs text-mist/50">
-          © {year} {siteConfig.name}. Todos los derechos reservados. CrediPlus
-          no es una entidad gubernamental ni está afiliada al gobierno de
-          Estados Unidos.
+          {dict.footer.rights(year, siteConfig.name)}
         </p>
       </div>
     </footer>

@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --font-poppins: "Poppins", sans-serif;
+  --font-fraunces: "Fraunces", serif;
+  --font-inter: "Inter", sans-serif;
 }
 
 html {
@@ -24,7 +25,7 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid #d4af37;
+  outline: 2px solid #e8a33d;
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -41,21 +42,21 @@ textarea:focus-visible,
 }
 
 .glass {
-  background: rgba(16, 16, 16, 0.55);
+  background: rgba(15, 42, 74, 0.55);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(212, 175, 55, 0.18);
+  border: 1px solid rgba(232, 163, 61, 0.18);
 }
 
 .glass-light {
-  background: rgba(248, 248, 248, 0.6);
+  background: rgba(246, 247, 249, 0.6);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(16, 16, 16, 0.06);
+  border: 1px solid rgba(15, 42, 74, 0.06);
 }
 
 .text-gradient-gold {
-  background: linear-gradient(90deg, #b8952c 0%, #d4af37 45%, #e4c766 100%);
+  background: linear-gradient(90deg, #c6821f 0%, #e8a33d 45%, #f0b95e 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

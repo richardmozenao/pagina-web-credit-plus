@@ -1,3 +1,7 @@
+"use client";
+
+import { useLang } from "@/lib/i18n/LangProvider";
+
 export default function LegalLayout({
   title,
   updated,
@@ -7,15 +11,17 @@ export default function LegalLayout({
   updated: string;
   children: React.ReactNode;
 }) {
+  const { dict } = useLang();
+
   return (
     <>
       <header className="bg-ink pb-14 pt-36 text-center">
         <div className="container-xl">
-          <h1 className="text-4xl font-semibold text-paper md:text-5xl">
+          <h1 className="font-display text-4xl font-semibold text-paper md:text-5xl">
             {title}
           </h1>
           <p className="mt-3 text-sm text-mist/50">
-            Última actualización: {updated}
+            {dict.legal.updatedLabel}: {updated}
           </p>
         </div>
       </header>
