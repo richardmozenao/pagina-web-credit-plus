@@ -437,6 +437,11 @@ const es = {
           body: () =>
             "Podemos actualizar esta política ocasionalmente. Publicaremos cualquier cambio en esta misma página junto con la fecha de actualización.",
         },
+        {
+          heading: "7. Información de mensajes móviles (SMS)",
+          body: () =>
+            "La información de registro para mensajes móviles, incluyendo números de teléfono y el consentimiento de SMS, no será compartida con terceros con fines de marketing. La usamos únicamente para enviarte los mensajes que solicitaste.",
+        },
       ] as LegalSection[],
     },
     terminos: {
@@ -471,6 +476,11 @@ const es = {
         {
           heading: "6. Contacto",
           body: () => "Si tienes dudas sobre estos términos, escríbenos a",
+        },
+        {
+          heading: "7. Mensajes móviles (SMS)",
+          body: () =>
+            "Aceptas recibir mensajes informativos (recordatorios de citas, notificaciones de cuenta, etc.) de parte de CREDITPLUS FINANCIAL TECHNOLOGICS. La frecuencia de los mensajes puede variar. Pueden aplicar tarifas de mensajes y datos. Para ayuda, responde HELP o escríbenos a creditplus.admin@gmail.com. Puedes cancelar la suscripción en cualquier momento respondiendo STOP.",
         },
       ] as LegalSection[],
     },
@@ -894,6 +904,11 @@ const en: Dictionary = {
           body: () =>
             "We may update this policy from time to time. We will post any changes on this same page along with the update date.",
         },
+        {
+          heading: "7. Mobile (SMS) message information",
+          body: () =>
+            "Mobile opt-in information, including phone numbers and SMS consent, will not be shared with third parties for marketing purposes. We use it only to send the messages you asked for.",
+        },
       ],
     },
     terminos: {
@@ -928,6 +943,11 @@ const en: Dictionary = {
         {
           heading: "6. Contact",
           body: () => "If you have questions about these terms, write to us at",
+        },
+        {
+          heading: "7. Mobile messages (SMS)",
+          body: () =>
+            "You agree to receive information messages (appointment reminders, account notifications, etc.) from CREDITPLUS FINANCIAL TECHNOLOGICS. Message frequency varies. Message and data rates may apply. For help, reply HELP or email us at creditplus.admin@gmail.com. You can opt out at any time by replying STOP.",
         },
       ],
     },
