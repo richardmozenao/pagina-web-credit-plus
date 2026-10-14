@@ -320,10 +320,10 @@ const es = {
       sendError:
         "No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directamente por correo o WhatsApp.",
       success: "¡Gracias! Recibimos tu mensaje y te contactaremos pronto.",
-      consentHeading: "Opt-In for mobile messages",
+      consentHeading: "Autorización para mensajes móviles",
       consentText:
-        "Consent to Receive informational messages & Alerts from Credit-Plus. Message frequency varies. Message & data rates may apply. You can reply STOP to unsubscribe at any time.",
-      consentLabel: "Opt-In",
+        "Doy mi consentimiento para recibir mensajes informativos y alertas de Credit-Plus. La frecuencia de los mensajes puede variar. Pueden aplicar tarifas de mensajes y datos. Puedes responder STOP para cancelar la suscripción en cualquier momento.",
+      consentLabel: "Acepto",
       consentRequired: "Debes dar tu consentimiento para poder enviar el formulario.",
     },
   },
