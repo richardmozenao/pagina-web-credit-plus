@@ -320,6 +320,11 @@ const es = {
       sendError:
         "No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directamente por correo o WhatsApp.",
       success: "¡Gracias! Recibimos tu mensaje y te contactaremos pronto.",
+      consentHeading: "Opt-In for mobile messages",
+      consentText:
+        "Consent to Receive informational messages & Alerts from Credit-Plus. Message frequency varies. Message & data rates may apply. You can reply STOP to unsubscribe at any time.",
+      consentLabel: "Opt-In",
+      consentRequired: "Debes dar tu consentimiento para poder enviar el formulario.",
     },
   },
   servicesPage: {
@@ -772,6 +777,11 @@ const en: Dictionary = {
       sendError:
         "We couldn't send your message. Please try again or write to us directly by email or WhatsApp.",
       success: "Thank you! We received your message and will contact you soon.",
+      consentHeading: "Opt-In for mobile messages",
+      consentText:
+        "Consent to Receive informational messages & Alerts from Credit-Plus. Message frequency varies. Message & data rates may apply. You can reply STOP to unsubscribe at any time.",
+      consentLabel: "Opt-In",
+      consentRequired: "You must give your consent to submit the form.",
     },
   },
   servicesPage: {

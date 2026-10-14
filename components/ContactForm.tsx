@@ -11,13 +11,21 @@ type Status = "idle" | "loading" | "success" | "error";
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [consent, setConsent] = useState(false);
   const { dict } = useLang();
   const f = dict.contactPage.form;
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("loading");
     setErrorMsg("");
+
+    if (!consent) {
+      setStatus("error");
+      setErrorMsg(f.consentRequired);
+      return;
+    }
+
+    setStatus("loading");
 
     const form = e.currentTarget;
 
@@ -50,6 +58,7 @@ export default function ContactForm() {
       if (result.success) {
         setStatus("success");
         form.reset();
+        setConsent(false);
       } else {
         throw new Error(result.message ?? "Static Forms request failed");
       }
@@ -145,9 +154,25 @@ export default function ContactForm() {
         </div>
       </div>
 
+      <div className="mt-8 rounded-2xl border border-ink/15 bg-white/60 p-5">
+        <p className="mb-2 text-sm font-semibold text-ink">{f.consentHeading}</p>
+        <p className="mb-4 text-xs leading-relaxed text-ink/70">{f.consentText}</p>
+        <label htmlFor="consent" className="flex cursor-pointer items-center gap-3 text-sm text-ink">
+          <input
+            id="consent"
+            name="consent"
+            type="checkbox"
+            checked={consent}
+            onChange={(e) => setConsent(e.target.checked)}
+            className="h-4 w-4 rounded border-ink/30 text-gold focus:ring-gold"
+          />
+          {f.consentLabel}
+        </label>
+      </div>
+
       <motion.button
         type="submit"
-        disabled={status === "loading"}
+        disabled={status === "loading" || !consent}
         whileHover={{ scale: status === "loading" ? 1 : 1.02 }}
         whileTap={{ scale: 0.98 }}
         className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-8 py-4 text-sm font-semibold text-paper transition hover:bg-black disabled:opacity-60 md:w-auto"
